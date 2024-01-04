@@ -1,0 +1,14 @@
+name: 01-run-on-pull-request
+
+on:
+  pull_request:
+
+jobs:
+  run-on-pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
