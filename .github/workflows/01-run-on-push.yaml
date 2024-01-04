@@ -1,8 +1,6 @@
 name: 01-run-on-push
 
-on:
-  push:
-    branches: [main]
+on: [push]
 
 jobs:
   run-on-push:

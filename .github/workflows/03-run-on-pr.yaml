@@ -1,7 +1,6 @@
 name: 03-run-on-pull-request
 
-on:
-  pull_request:
+on: [pull_request]
 
 jobs:
   run-on-pull-request:
