@@ -1,11 +1,10 @@
-name: 01-run-on-push
+name: 03-run-on-pull-request
 
 on:
-  push:
-    branches: [main]
+  pull_request:
 
 jobs:
-  run-on-push:
+  run-on-pull-request:
     runs-on: ubuntu-latest
     steps:
       - name: Dump GitHub context
