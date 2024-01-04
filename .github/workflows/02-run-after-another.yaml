@@ -8,12 +8,12 @@ on:
 jobs:
   if-pr:
     runs-on: ubuntu-latest
-    if: ${{ (github.event.workflow_run.event == 'pull_request') and (github.event.workflow_run.conclusion == 'success') }}
+    if: ${{ (github.event.workflow_run.event == 'pull_request') && (github.event.workflow_run.conclusion == 'success') }}
     steps:
       - run: echo 'The triggering workflow has passed and was triggered via a pull_request'
   if-push:
     runs-on: ubuntu-latest
-    if: ${{ (github.event.workflow_run.event == 'push') and (github.event.workflow_run.conclusion == 'success') }}
+    if: ${{ (github.event.workflow_run.event == 'push') && (github.event.workflow_run.conclusion == 'success') }}
     steps:
       - run: echo 'The triggering workflow has passed and was triggered via a push'
   run-after-another:
