@@ -24,3 +24,5 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
           echo "$GITHUB_CONTEXT"
+      - name: Test step for PR
+        run: echo "No op step added just for testing"
