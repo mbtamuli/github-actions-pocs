@@ -1,4 +1,5 @@
 name: 02-run-after-another
+run-name: Triggered via ${{ github.event.workflow_run.id }} for a ${{ github.even.workflow_run.event }} event
 
 on:
   workflow_run:
