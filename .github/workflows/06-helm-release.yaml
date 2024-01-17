@@ -1,0 +1,25 @@
+name: 06-helm-release
+
+on: [push]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - # Checkout the repository
+        uses: actions/checkout@v4
+      - # Configure git
+        run: |
+          git config user.name ${{ github.actor}}
+          git config user.email "${{ github.actor }}@users.noreply.github.com"
+      - # Install helm
+        uses: azure/setup-helm@v3
+      - # Run the chart releaser
+        uses: helm/chart-releaser-action@v1.6.0
+        with:
+          charts_dir: helm-charts
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
