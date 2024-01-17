@@ -1,0 +1,19 @@
+name: 04-go-binary
+
+on: [push]
+
+jobs:
+  go-binary:
+    runs-on: ubuntu-latest
+    steps:
+      - # Checkout the repository
+        uses: actions/checkout@v4
+      - # Setup Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21'
+          cache-dependency-path: 'go.sum'
+      - # Run the go program
+        run: go run go-program/main.go
+      - # Build a binary for the go program
+        run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o hello-world go-program/main.go
