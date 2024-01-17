@@ -2,7 +2,6 @@ name: 06-update-helm-chart
 
 on:
   push:
-    branches: '*'
     tags: 'v*.*.*'
 
 jobs:
@@ -15,13 +14,14 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-      - name: Test
-        run: |
-          echo ${{ github.ref_name }}
       - name: Update Helm chart appVersion and version
         working-directory: helm-charts
-        if: ${{ github.ref_type == 'tag' }}
         run: |
           cd hello-world
           cat Chart.yaml
-          echo ${{ github.ref_name }}
+          export newVersion="${{ github.ref_name }}"
+          sed \
+            -e "s/^version:.*/version: ${newVersion#v*}/" \
+            -e "s/^appVersion:.*/appVersion: $newVersion/" \
+            Chart.yaml
+          cat Chart.yaml
