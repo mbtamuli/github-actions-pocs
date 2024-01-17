@@ -15,8 +15,13 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Test
+        run: |
+          echo ${{ github.ref_name }}
       - name: Update Helm chart appVersion and version
         working-directory: helm-charts
+        if: ${{ github.ref_type == 'tag' }}
         run: |
           cd hello-world
-          echo $GITHUB_REF
+          cat Chart.yaml
+          echo ${{ github.ref_name }}
