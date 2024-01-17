@@ -18,10 +18,17 @@ jobs:
         working-directory: helm-charts
         run: |
           cd hello-world
+          echo "=========OLD=========="
           cat Chart.yaml
+          echo "=========/OLD========="
           export newVersion="${{ github.ref_name }}"
-          sed \
+          sed -i \
             -e "s/^version:.*/version: ${newVersion#v*}/" \
             -e "s/^appVersion:.*/appVersion: $newVersion/" \
             Chart.yaml
+          echo "=========NEW=========="
           cat Chart.yaml
+          echo "=========/NEW========="
+          git add .
+          git commit -m "🤖 Update version and appVersion in Chart.yaml"
+          git push
