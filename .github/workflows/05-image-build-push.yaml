@@ -2,6 +2,9 @@ name: 05-image-build-push
 
 on: [push]
 
+permissions:
+  packages: write
+
 jobs:
   go-binary:
     runs-on: ubuntu-latest
