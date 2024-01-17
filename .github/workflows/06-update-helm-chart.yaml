@@ -17,6 +17,6 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Update Helm chart appVersion and version
         working-directory: helm-charts
-        run:
+        run: |
           cd hello-world
           echo $GITHUB_REF
