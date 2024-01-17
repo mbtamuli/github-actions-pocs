@@ -1,0 +1,22 @@
+name: 06-update-helm-chart
+
+on:
+  push:
+    branches: '*'
+    tags: 'v*.*.*'
+
+jobs:
+  update-helm-chart:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Update Helm chart appVersion and version
+        working-directory: helm-charts
+        run:
+          cd hello-world
+          echo $GITHUB_REF
