@@ -4,6 +4,7 @@ metadata:
   name: {{ include "helm-hello-world.fullname" . }}
   labels:
     {{- include "helm-hello-world.labels" . | nindent 4 }}
+    hello: world
 spec:
   template:
     spec:
