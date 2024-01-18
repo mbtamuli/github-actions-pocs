@@ -3,7 +3,7 @@
 Setup the helm repository
 
 ```
-helm repo add aws-ebs-csi-driver https://mriyam.dev/github-actions-pocs
+helm repo add github-actions-pocs https://mriyam.dev/github-actions-pocs
 helm repo update
 ```
 
